@@ -23,3 +23,35 @@
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
 ##
+for filename in /content/*.csv
+do
+ f=$(basename $filename)
+ conteo=1
+ IFS=,
+ while read c1 c2 c3 c4 c5 c6 c7
+ do
+   if [[ ! -z $c1 ]]; then
+      echo "$f,$conteo,${c1:0:1},${c1#??}" | sed "s/ //g"
+        if [[ ! -z $c2 ]]; then
+          echo "$f,$conteo,${c1:0:1},$c2" | sed "s/ //g"
+            if [[ ! -z $c3 ]]; then
+              echo "$f,$conteo,${c1:0:1},$c3" | sed "s/ //g"
+                if [[ ! -z $c4 ]]; then
+                  echo "$f,$conteo,${c1:0:1},$c4" | sed "s/ //g"
+                    if [[ ! -z $c5 ]]; then
+                      echo "$f,$conteo,${c1:0:1},$c5" | sed "s/ //g"
+                        if [[ ! -z $c6 ]]; then
+                          echo "$f,$conteo,${c1:0:1},$c6" | sed "s/ //g"
+                            if [[ ! -z $c7 ]]; then
+                              echo "$f,$conteo,${c1:0:1},$c7" | sed "s/ //g"
+                            fi
+                        fi
+                    fi
+                fi
+            fi
+        fi
+    fi
+    conteo=$((conteo + 1))
+ done < $f
+done > docs
+cat docs

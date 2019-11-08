@@ -22,6 +22,27 @@
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
 ##
-
+import pandas
+import os
+import re
+os.chdir("/app/Laboratorios/03-python=1/")
+datos = pandas.read_csv("./q01=1/data.csv", sep="\t", header=None)
+diccionario = datos[4].str.split(',',expand=True)
+intermedio = diccionario[0].append(diccionario[1]).reset_index(drop=True)
+intermedio = intermedio.to_frame()
+for i in range(4):
+    intermedio = intermedio[0].append(diccionario[i+2]).reset_index(drop=True)
+    intermedio = intermedio.to_frame()
+diccionario = intermedio
+len(intermedio)
+diccionario = diccionario.dropna()
+diccionario = diccionario[0].str.split(':',expand=True)
+letras_max = diccionario.groupby([diccionario[0]]).max()
+indice = list(letras_max.index)
+letras_max = letras_max.values.tolist()
+letras_min = diccionario.groupby([diccionario[0]]).min()
+letras_min = letras_min.values.tolist()
+for i in range(10):
+    print(str(indice[i])+","+str(letras_min[i])[2:3]+","+str(letras_max[i])[2:3])
 
 

@@ -16,3 +16,12 @@
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
 ##
+import pandas
+import os
+import re
+import string
+os.chdir("/app/Laboratorios/04-pandas=1/")
+datos = pandas.read_csv("./q05=1/tbl0.tsv", sep="\t")
+letras_sum = datos.groupby([datos["_c1"]]).sum()
+del letras_sum["_c0"]
+print(letras_sum.iloc[:,0])

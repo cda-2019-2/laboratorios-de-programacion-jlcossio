@@ -16,3 +16,12 @@
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
 ##
+import pandas
+import os
+import re
+import string
+os.chdir("/app/Laboratorios/04-pandas=1/")
+datos = pandas.read_csv("./q02=1/tbl0.tsv", sep="\t")
+group = datos.groupby([datos["_c1"]]).mean()
+del group["_c0"]
+print(group.iloc[:,0])

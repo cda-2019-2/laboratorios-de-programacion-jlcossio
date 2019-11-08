@@ -16,4 +16,13 @@
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
 ##
-
+import pandas
+import os
+import re
+import string
+os.chdir("/app/Laboratorios/04-pandas=1/")
+datos = pandas.read_csv("./q03=1/tbl0.tsv", sep="\t")
+letras_max = datos.groupby([datos["_c1"]]).max()
+del letras_max["_c0"]
+del letras_max["_c3"]
+print(letras_max.iloc[:,0])

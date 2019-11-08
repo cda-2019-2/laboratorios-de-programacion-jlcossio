@@ -17,6 +17,18 @@
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
 ##
-
-
+import pandas
+import os
+import re
+import string
+os.chdir("/app/Laboratorios/04-pandas=1/")
+datos_0 = pandas.read_csv("./q11=1/tbl0.tsv", sep="\t")
+datos_2 = pandas.read_csv("./q11=1/tbl2.tsv", sep="\t")
+datos_2 = datos_2.groupby([datos_2["_c0"]]).sum()
+datos = datos_0
+datos["_c5b"] = datos_2["_c5b"]
+tabla = datos.groupby([datos["_c1"]]).sum()
+del tabla["_c0"]
+del tabla["_c2"]
+print(tabla.iloc[:,0])
 

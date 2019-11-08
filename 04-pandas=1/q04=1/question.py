@@ -10,4 +10,12 @@
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
 ##
-
+import pandas
+import os
+import re
+import string
+os.chdir("/app/Laboratorios/04-pandas=1/")
+datos = pandas.read_csv("./q04=1/tbl1.tsv", sep="\t")
+unicos = pandas.unique(datos["_c4"].values).tolist()
+mayusc = [x.upper() for x in unicos]
+sorted(mayusc)

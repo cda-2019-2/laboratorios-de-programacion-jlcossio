@@ -22,4 +22,25 @@
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
 ##
-
+import pandas
+import os
+import re
+os.chdir("/app/Laboratorios/03-python=1/")
+datos = pandas.read_csv("./q01=1/data.csv", sep="\t", header=None)
+numeros = pandas.unique(datos[1].values).tolist()
+numeros.sort()
+def asociadas(num_parametro):
+    temp = []
+    for i in list(range(0,len(datos[1]))):
+        if datos.iloc[i, 1] == num_parametro:
+            temp.append(datos.iloc[i, 0])
+    return(temp)
+letras = [asociadas(j) for j in numeros]
+def uni_sort(pos_parametro):
+    temp = pandas.unique(letras[pos_parametro]).tolist()
+    temp.sort()
+    return(temp)
+letras = [uni_sort(i) for i in list(range(0,len(letras)))]
+tupla = [(str(numeros[i]), letras[i]) for i in list(range(0,len(numeros)))]
+for i in list(range(0,len(tupla))):
+    print(tupla[i])

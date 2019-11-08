@@ -25,4 +25,7 @@
 --
 --  >>> Escriba su codigo a partir de este punto <<<
 --  
-
+SELECT *
+FROM data
+ORDER BY c14
+LIMIT 5

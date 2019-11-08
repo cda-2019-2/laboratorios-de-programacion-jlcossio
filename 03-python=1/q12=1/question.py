@@ -16,6 +16,13 @@
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
 ##
-
-
+import pandas
+import os
+import re
+os.chdir("/app/Laboratorios/03-python=1/")
+datos = pandas.read_csv("./q01=1/data.csv", sep="\t", header=None)
+datos['diccionario'] = datos[4].str.split(',')
+dumi = datos['diccionario'].apply(lambda x: sum([int(re.sub(r'.+:', '', i)) for i in x]))
+for i in list(range(0,len(datos[0]))):
+    print(str(datos.iloc[i,0])+","+str(dumi[i]))
 

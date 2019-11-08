@@ -16,3 +16,11 @@
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
 ##
+import pandas
+import os
+import re
+import string
+os.chdir("/app/Laboratorios/04-pandas=1/")
+datos = pandas.read_csv("./q01=1/data.tsv", sep="\t")
+count = datos["_c1"].value_counts().sort_index()
+print(count.iloc[:])

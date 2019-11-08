@@ -14,3 +14,11 @@
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
 ##
+import pandas
+import os
+import re
+import string
+os.chdir("/app/Laboratorios/04-pandas=1/")
+datos = pandas.read_csv("./q06=1/tbl0.tsv", sep="\t")
+datos["suma"] = datos["_c0"] + datos["_c2"]
+datos
